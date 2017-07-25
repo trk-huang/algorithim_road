@@ -21,7 +21,7 @@ public class BubbleSort {
      * @param i
      * @param j
      */
-    private void exChange(int[] data, int i, int j) {
+    public void exChange(int[] data, int i, int j) {
         int temp = data[i];
         data[i] = data[j];
         data[j] = temp;
@@ -45,6 +45,43 @@ public class BubbleSort {
         return data;
     }
 }
+```
+
+尽管冒泡排序是最容易了解和实现的排序算法之一，但它对于少数元素之外的数列排序是很没有效率的。
+
+## 改进型算法：鸡尾酒排序算法
+
+鸡尾酒排序，也叫**定向冒泡排序**，是冒泡排序的一种改进。此算法与冒泡排序的不同处在于**从低到高然后从高到低**，而冒泡排序则仅从低到高去比较序列里的每个元素。他可以得到比冒泡排序稍微好一点的效能。
+
+```java
+/**
+ * Created by huangdaju on 17/7/25.
+ */
+
+public class CocksailSort extends BubbleSort {
+
+    public void cocksailSort(final int[] data, final MainActivity activity) {
+        int right = data.length - 1;
+        int left = 0;
+        while (left < right) {
+            for (int i = left; i < right; i++) {
+                if (data[i] > data[i + 1]) {
+                    exChange(data, i, i + 1);
+                    activity.onCallback();
+                }
+            }
+            right--;
+            for (int i = right; i > left; i--) {
+                if (data[i - 1] > data[i]) {
+                    exChange(data, i - 1, i);
+                    activity.onCallback();
+                }
+            }
+            left++;
+        }
+    }
+}
+
 ```
 
 

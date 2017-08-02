@@ -61,7 +61,7 @@ public class MiddleInsertSort extends BubbleSort {
             get = datas[i];
             left = 0;
             right = i - 1;
-            while (left < right) {
+            while (left <= right) {
                 int middle = (left + right) / 2;
                 if (datas[middle] > get) {
                     left = middle + 1;
@@ -83,8 +83,6 @@ public class MiddleInsertSort extends BubbleSort {
 ```
 
 当n较大的时候，二分插入排序的时间复杂度比直接插入排序最差的时间复杂度要好，但比直接插入排序最好时间复杂度要差；当以元素初始序列接近与升序，直接插入排序比二分插入排序的比较次数要少。
-
-
 
 插入排序的更高效改进：希尔排序
 

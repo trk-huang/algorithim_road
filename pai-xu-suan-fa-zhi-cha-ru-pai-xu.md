@@ -15,8 +15,6 @@
 5. 将新元素插入该位置后
 6. 重复步骤2-5，直至排序完成
 
-
-
 ```java
 /**
  * Created by huangdaju on 17/7/27.
@@ -39,8 +37,54 @@ public class InsertSort extends BubbleSort {
         }
     }
 }
-
 ```
 
+## 插入排序之二分插入排序
 
+对于插入排序，如果比较操作的代价与交换操作大的话，可以采用二分查找法来减少比较操作的次数。
+
+代码如下：
+
+```java
+/**
+ * Created by huangdaju on 17/8/2.
+ */
+
+public class MiddleInsertSort extends BubbleSort {
+
+    public void middleInsertSort(int[] datas, MainActivity mainActivity) {
+        int n = datas.length;
+        int get;
+        int left = 0, right = 0, j;
+
+        for (int i = 0; i < datas.length; i++) {
+            get = datas[i];
+            left = 0;
+            right = i - 1;
+            while (left < right) {
+                int middle = (left + right) / 2;
+                if (datas[middle] > get) {
+                    left = middle + 1;
+                } else {
+                    right = middle - 1;
+                }
+            }
+
+            for (j = i - 1; j >= left; j--) {
+                {
+                    datas[j + 1] = datas[j];
+                }
+                datas[left] = get;
+                mainActivity.onCallback();
+            }
+        }
+    }
+}
+```
+
+当n较大的时候，二分插入排序的时间复杂度比直接插入排序最差的时间复杂度要好，但比直接插入排序最好时间复杂度要差；当以元素初始序列接近与升序，直接插入排序比二分插入排序的比较次数要少。
+
+
+
+插入排序的更高效改进：希尔排序
 

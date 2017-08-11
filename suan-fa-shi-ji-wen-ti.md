@@ -8,35 +8,35 @@
 
 ```java
 def longestPailindrome(str):
-	n = len(str)
-	maxL,maxR,max = 0,0,0
-	for i in range(n):
-		start = i
-		end = i + 1
-		while start >=0 and end < n:
-			if str[start] == str[end]:
-				if end - start > max:
-					max = end - start + 1
-					maxL = start
-					maxR= end
-				start -= 1
-				end += 1
-			else:
-				break
-		start = i -1
-		end = i+1
-		while start >=0 and end < n:
-				if str[start] == str[end]:
-					if end - start > max:
-						max = end - start + 1
-						maxL = start
-						maxR = end 
-					start -= 1
-					end += 1
-				else:
-					break	
-	print max
-	return str[maxL:maxR+1]
+    n = len(str)
+    maxL,maxR,max = 0,0,0
+    for i in range(n):
+        start = i
+        end = i + 1
+        while start >=0 and end < n:
+            if str[start] == str[end]:
+                if end - start > max:
+                    max = end - start + 1
+                    maxL = start
+                    maxR= end
+                start -= 1
+                end += 1
+            else:
+                break
+        start = i -1
+        end = i+1
+        while start >=0 and end < n:
+                if str[start] == str[end]:
+                    if end - start > max:
+                        max = end - start + 1
+                        maxL = start
+                        maxR = end 
+                    start -= 1
+                    end += 1
+                else:
+                    break    
+    print max
+    return str[maxL:maxR+1]
 ```
 
 java代码实现：
@@ -103,15 +103,13 @@ if(mx - i > p[j]){
     p[i] = p[j];
 }else{
     p[i] = mx - i;
-    
+
 }
 ```
 
 当然光看代码还是不够清晰的，还是要借助图来理解比较容易。
 
 当mx - i &gt; p\[j\]的时候，以S\[j\]为中心的回文子串包含在以S\[id\]为中心的回文子串中，由于i和j对称，以S\[i\]为中心的回文子串必然包含在以S\[id\]为中心的回文子串中，所以必有P\[i\] = P\[j\]
-
-
 
 ```python
 def manacher(s):
@@ -138,41 +136,6 @@ def manacher(s):
         MaxLen=max(MaxLen, RL[i])
     return MaxLen-1
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
 
 
 
